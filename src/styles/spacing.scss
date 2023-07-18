@@ -1,0 +1,8 @@
+$space-baseline: 24px;
+
+$space-xs: calc(#{$space-baseline} / 4);
+$space-s: calc(#{$space-baseline} / 2);
+$space-m: $space-baseline;
+$space-l: calc(#{$space-baseline} * 1.5);
+$space-xl: calc(#{$space-baseline} * 2);
+

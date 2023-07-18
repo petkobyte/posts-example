@@ -1,0 +1,6 @@
+@use '../../styles/spacing.scss';
+
+.app-header {
+  color: white;
+  padding: spacing.$space-m;
+}

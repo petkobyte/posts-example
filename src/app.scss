@@ -1,0 +1,9 @@
+@use './styles/spacing.scss';
+
+.background {
+  min-height: 100vh;
+  padding-bottom: spacing.$space-m;
+  height: auto;
+  width: 100%;
+  background-image: linear-gradient(to right, #5475c2, #5d7ec9, #6688d0, #7091d7, #799bde, #73a7e8, #6eb3f1, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
