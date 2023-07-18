@@ -1,0 +1,14 @@
+@use '../../../../styles/spacing.scss';
+
+.comment-container {
+  margin: spacing.$space-s;
+  
+  .comment-user {
+    display: flex;
+    align-items: center;
+
+    .comment-user-icon {
+      margin-right: spacing.$space-s;
+    }
+  }
+}

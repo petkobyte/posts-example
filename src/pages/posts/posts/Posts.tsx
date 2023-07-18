@@ -22,13 +22,12 @@ const Posts = () => {
   const renderPosts = () => {
     return posts?.map((post: PostModel) => {
       const { id, title, body, userId } = post;
-
       const user: UserModel | undefined = users?.find((user: UserModel) => user.id === userId);
 
       return (
         <Card key={id}>
           <PostContainer title={title} body={body} name={user ? user.name : ''} />
-          <Comments />
+          <Comments postId={id} />
         </Card>
       );
     });

@@ -1,0 +1,22 @@
+@use '../../styles/spacing.scss';
+@use '../../styles/colors.scss';
+
+.accordion-container {
+  width: 100%;
+  background-color: colors.$main-purple;
+  border-radius: spacing.$space-s;
+
+  .accordion-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: spacing.$space-xs;
+    cursor: pointer;
+    color: white;
+  }
+
+  .accordion-content {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+}
