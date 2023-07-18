@@ -4,7 +4,7 @@ import { Card } from '../../components/card';
 import './styles.scss';
 import { useTranslation } from 'react-i18next';
 
-export const NotFound = () => {
+const NotFound = () => {
   const { t } = useTranslation();
 
   return (
@@ -19,3 +19,5 @@ export const NotFound = () => {
     </Card>
   );
 };
+
+export default NotFound;

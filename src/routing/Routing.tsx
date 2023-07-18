@@ -1,13 +1,13 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Posts } from '../pages/posts/posts/Posts';
-import { Post } from '../pages/posts/post/Post';
-import { Home } from '../pages/home/Home';
-import { NotFound } from '../pages/notFound/NotFound';
+import React, { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+const Posts = lazy(() => import('../pages/posts/posts/Posts'));
+const Post = lazy(() => import('../pages/posts/post/Post'));
+const Home = lazy(() => import('../pages/home/Home'));
+const NotFound = lazy(() => import('../pages/notFound/NotFound'));
 
 export const Routing = () => {
   return (
-    <BrowserRouter>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='posts'>
@@ -16,6 +16,6 @@ export const Routing = () => {
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </Suspense>
   );
 };

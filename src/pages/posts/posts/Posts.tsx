@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Card } from '../../../components/card';
 import { PostContainer } from '../components/postContainer';
 
-export const Posts = () => {
+const Posts = () => {
   useEffect(() => {
     console.log('POSTS');
   }, []);
@@ -63,3 +63,5 @@ export const Posts = () => {
     </div>
   );
 };
+
+export default Posts;

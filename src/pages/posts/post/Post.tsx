@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-export const Post = () => {
+const Post = () => {
   useEffect(() => {
     console.log('ONE POST');
   }, []);
@@ -11,3 +11,5 @@ export const Post = () => {
     </div>
   );
 };
+
+export default Post;
