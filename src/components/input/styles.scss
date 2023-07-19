@@ -1,0 +1,16 @@
+@use '../../styles/spacing.scss';
+
+.input-container {
+  margin-top: spacing.$space-m;
+  margin-bottom: spacing.$space-m;
+
+  input {
+    font-size: 16px;
+    font-weight: 700;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: spacing.$space-s spacing.$space-s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
