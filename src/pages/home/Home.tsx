@@ -1,14 +1,17 @@
 import React from 'react';
-import { Card } from '../../components/card';
 import { NavLink } from 'react-router-dom';
 import './styles.scss';
 import { useTranslation } from 'react-i18next';
+import Card from '../../components/card/Card';
+import { HELLO } from '../../constants/hello';
+import { withHelloLogging } from '../../hoc/loggingHoc';
+import { HomeModel } from './models';
 
-const Home = () => {
+const Home = (props: HomeModel) => {
   const { t } = useTranslation();
 
   return (
-    <Card>
+    <Card hello={HELLO}>
       <div className='home-container'>
         <div>{t('res_homeMessage')}</div>
         <br />
@@ -19,4 +22,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withHelloLogging(Home, 'Home');

@@ -1,8 +1,9 @@
 import React from 'react';
 import './styles.scss';
 import { PostContentProps } from './models';
+import { withHelloLogging } from '../../../../hoc/loggingHoc';
 
-export const PostContent = (props: PostContentProps) => {
+const PostContent = (props: PostContentProps) => {
   const { title, body, name } = props;
   return (
     <>
@@ -13,3 +14,5 @@ export const PostContent = (props: PostContentProps) => {
     </>
   );
 };
+
+export default withHelloLogging(PostContent, 'PostCard');

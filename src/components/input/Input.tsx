@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import './styles.scss';
 import { InputProps } from './models';
+import { withHelloLogging } from '../../hoc/loggingHoc';
 
-export const Input: FC<InputProps> = ({ type, value, placeholder, name, disabled, onChange }) => {
+const Input: FC<InputProps> = ({ type, value, placeholder, name, disabled, onChange }) => {
   return (
     <div className='input-container'>
       <input
@@ -16,3 +17,5 @@ export const Input: FC<InputProps> = ({ type, value, placeholder, name, disabled
     </div>
   );
 };
+
+export default withHelloLogging(Input, 'Input');

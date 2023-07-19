@@ -3,8 +3,9 @@ import './styles.scss';
 import { useTranslation } from 'react-i18next';
 import image404 from '../../resources/images/panic404.png';
 import { ErrorHandlerProps } from './models';
+import { withHelloLogging } from '../../hoc/loggingHoc';
 
-export const ErrorHandler: FC<ErrorHandlerProps> = ({ message }) => {
+const ErrorHandler: FC<ErrorHandlerProps> = ({ message }) => {
   const { t } = useTranslation();
   return (
     <div className='error-container'>
@@ -16,3 +17,5 @@ export const ErrorHandler: FC<ErrorHandlerProps> = ({ message }) => {
     </div>
   );
 };
+
+export default withHelloLogging(ErrorHandler, 'ErrorHandler');

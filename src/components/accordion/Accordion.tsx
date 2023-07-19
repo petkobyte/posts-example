@@ -7,8 +7,9 @@ import {
   faChevronCircleUp,
   faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
+import { withHelloLogging } from '../../hoc/loggingHoc';
 
-export const Accordion: FC<AccordionProps> = ({ children, ...props }) => {
+const Accordion: FC<AccordionProps> = ({ children, ...props }) => {
   const { title, isActive } = props;
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -44,3 +45,5 @@ export const Accordion: FC<AccordionProps> = ({ children, ...props }) => {
     </div>
   );
 };
+
+export default withHelloLogging(Accordion, 'Accordion');

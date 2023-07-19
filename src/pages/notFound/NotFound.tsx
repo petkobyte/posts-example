@@ -1,17 +1,20 @@
 import React from 'react';
-import { Card } from '../../components/card';
 import './styles.scss';
 import { useTranslation } from 'react-i18next';
-import { ErrorHandler } from '../../components/errorHandler/ErrorHandler';
+import Card from '../../components/card/Card';
+import { HELLO } from '../../constants/hello';
+import ErrorHandler from '../../components/errorHandler/ErrorHandler';
+import { NotFoundModel } from './models';
+import { withHelloLogging } from '../../hoc/loggingHoc';
 
-const NotFound = () => {
+const NotFound = (props: NotFoundModel) => {
   const { t } = useTranslation();
 
   return (
-    <Card>
-      <ErrorHandler message={t('res_pageNotFoundMessage')} />
+    <Card hello={HELLO}>
+      <ErrorHandler message={t('res_pageNotFoundMessage')} hello={HELLO} />
     </Card>
   );
 };
 
-export default NotFound;
+export default withHelloLogging(NotFound, 'NotFound');

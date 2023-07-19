@@ -3,8 +3,9 @@ import './styles.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { LoadingProps } from './models';
+import { withHelloLogging } from '../../hoc/loggingHoc';
 
-export const Loading: FC<LoadingProps> = ({ color, size, text }) => {
+const Loading: FC<LoadingProps> = ({ color, size, text }) => {
   return (
     <div className={`loading-container ${color}`}>
       <FontAwesomeIcon icon={faSpinner} size={size} spin />
@@ -12,3 +13,5 @@ export const Loading: FC<LoadingProps> = ({ color, size, text }) => {
     </div>
   );
 };
+
+export default withHelloLogging(Loading, 'Loading');

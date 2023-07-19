@@ -3,10 +3,13 @@ import { PostCard } from '../components/postCard';
 import { useLocation, useParams } from 'react-router-dom';
 import { PostModel } from '../models/postModel';
 import { useGetPost } from '../posts/hooks/getPostHook';
-import { Loading } from '../../../components/loading';
 import { useGetUser } from '../posts/hooks/getUserHook';
+import { PostsModel } from '../models';
+import Loading from '../../../components/loading/Loading';
+import { HELLO } from '../../../constants/hello';
+import { withHelloLogging } from '../../../hoc/loggingHoc';
 
-const Post = () => {
+const Post = (props: PostsModel) => {
   const location = useLocation();
   const { id } = useParams();
 
@@ -58,7 +61,7 @@ const Post = () => {
     }
   }, [userData]);
 
-  if (isLoadingPost || isLoadingUser) return <Loading size={'2xl'} />;
+  if (isLoadingPost || isLoadingUser) return <Loading size={'2xl'} hello={HELLO} />;
   if (errorPost || errorUser) {
     return (
       <div>
@@ -69,9 +72,9 @@ const Post = () => {
 
   return (
     <div>
-      <PostCard post={post} userName={name} />
+      <PostCard post={post} userName={name} hello={HELLO} />
     </div>
   );
 };
 
-export default Post;
+export default withHelloLogging(Post, 'Post');

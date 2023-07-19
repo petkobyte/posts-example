@@ -4,12 +4,15 @@ import { PostModel } from '../models/postModel';
 import { useGetUsers } from './hooks/getUsersHook';
 import { UserModel } from '../models/userModel';
 import { PostCard } from '../components/postCard';
-import { Input } from '../../../components/input';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
-import { Loading } from '../../../components/loading';
+import { HELLO } from '../../../constants/hello';
+import Input from '../../../components/input/Input';
+import Loading from '../../../components/loading/Loading';
+import { PostsModel } from '../models';
+import { withHelloLogging } from '../../../hoc/loggingHoc';
 
-const Posts = () => {
+const Posts = (props: PostsModel) => {
   const { t } = useTranslation();
   const { isLoading: isLoadingPosts, error: postsError, data: posts } = useGetPosts();
   const { isLoading: isLoadingUsers, error: usersError, data: users } = useGetUsers();
@@ -46,7 +49,7 @@ const Posts = () => {
     return userIds;
   };
 
-  if (isLoadingPosts || isLoadingUsers) return <Loading size={'2xl'} />;
+  if (isLoadingPosts || isLoadingUsers) return <Loading size={'2xl'} hello={HELLO} />;
   if (postsError || usersError) {
     return (
       <div>
@@ -60,7 +63,7 @@ const Posts = () => {
       const { id, userId } = post;
       const user: UserModel | undefined = users?.find((user: UserModel) => user.id === userId);
 
-      return <PostCard key={id} post={post} userName={user ? user.name : ''} />;
+      return <PostCard key={id} post={post} userName={user ? user.name : ''} hello={HELLO} />;
     });
   };
 
@@ -73,10 +76,11 @@ const Posts = () => {
         name={'search-posts-input'}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
         disabled={!posts}
+        hello={HELLO}
       />
       {filteredPosts.length ? renderPosts() : <>{t('res_noSearchResults')}</>}
     </>
   );
 };
 
-export default Posts;
+export default withHelloLogging(Posts, 'Posts');

@@ -1,6 +1,7 @@
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { HelloModel } from '../../models.ts/helloModel';
 
-export interface LoadingProps {
+export interface LoadingProps extends HelloModel {
   color?: 'dark' | 'light';
   size: SizeProp;
   text?: string;
