@@ -66,7 +66,6 @@ const Post = (props: PostsModel) => {
     isLoadingPost || isLoadingUser,
     !!errorPost || !!errorUser,
   );
-  withLoadingAndErrorHOC;
 
   return (
     <>

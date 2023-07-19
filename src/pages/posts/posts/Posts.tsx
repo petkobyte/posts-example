@@ -67,7 +67,6 @@ const Posts = (props: PostsModel) => {
     isLoadingPosts || isLoadingUsers,
     !!postsError || !!usersError,
   );
-  withLoadingAndErrorHOC;
 
   return (
     <>
@@ -80,7 +79,7 @@ const Posts = (props: PostsModel) => {
         disabled={!posts}
         hello={HELLO}
       />
-      <PostsContentWithLoading hello={HELLO} />;
+      <PostsContentWithLoading hello={HELLO} />
     </>
   );
 };
