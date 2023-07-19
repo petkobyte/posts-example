@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Loading } from '../components/loading/Loading';
+import { Loading } from '../components/loading';
 const Posts = lazy(() => import('../pages/posts/posts/Posts'));
 const Post = lazy(() => import('../pages/posts/post/Post'));
 const Home = lazy(() => import('../pages/home/Home'));

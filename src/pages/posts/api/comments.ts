@@ -1,4 +1,3 @@
-import { PostModel } from '../models/postModel';
 import { httpClient } from '../../../utils/httpClient';
 import { CommentModel } from '../models/commentModel';
 

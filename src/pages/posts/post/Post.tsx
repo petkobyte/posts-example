@@ -3,7 +3,7 @@ import { PostCard } from '../components/postCard';
 import { useLocation, useParams } from 'react-router-dom';
 import { PostModel } from '../models/postModel';
 import { useGetPost } from '../posts/hooks/getPostHook';
-import { Loading } from '../../../components/loading/Loading';
+import { Loading } from '../../../components/loading';
 import { useGetUser } from '../posts/hooks/getUserHook';
 
 const Post = () => {

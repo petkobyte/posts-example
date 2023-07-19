@@ -7,7 +7,7 @@ import { PostCard } from '../components/postCard';
 import { Input } from '../../../components/input';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
-import { Loading } from '../../../components/loading/Loading';
+import { Loading } from '../../../components/loading';
 
 const Posts = () => {
   const { t } = useTranslation();
