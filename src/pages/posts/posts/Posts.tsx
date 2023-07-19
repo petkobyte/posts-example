@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 import { useGetPosts } from './hooks/getPostsHook';
 import { PostModel } from '../models/postModel';
 import { useGetUsers } from './hooks/getUsersHook';
@@ -11,6 +11,7 @@ import Input from '../../../components/input/Input';
 import Loading from '../../../components/loading/Loading';
 import { PostsModel } from '../models';
 import { withHelloLogging } from '../../../hoc/loggingHoc';
+import { withLoadingAndErrorHOC } from '../../../hoc/loadingAndErrorHOC';
 
 const Posts = (props: PostsModel) => {
   const { t } = useTranslation();
@@ -49,15 +50,6 @@ const Posts = (props: PostsModel) => {
     return userIds;
   };
 
-  if (isLoadingPosts || isLoadingUsers) return <Loading size={'2xl'} hello={HELLO} />;
-  if (postsError || usersError) {
-    return (
-      <div>
-        {postsError ? postsError.message : ''} {usersError ? usersError.message : ''}
-      </div>
-    );
-  }
-
   const renderPosts = () => {
     return filteredPosts.map((post: PostModel) => {
       const { id, userId } = post;
@@ -67,7 +59,7 @@ const Posts = (props: PostsModel) => {
     });
   };
 
-  return (
+  const PostsContent = () => (
     <>
       <Input
         type='text'
@@ -81,6 +73,15 @@ const Posts = (props: PostsModel) => {
       {filteredPosts.length ? renderPosts() : <>{t('res_noSearchResults')}</>}
     </>
   );
+
+  const PostsContentWithLoading = withLoadingAndErrorHOC(
+    PostsContent,
+    isLoadingPosts || isLoadingUsers,
+    !!postsError || !!usersError,
+  );
+  withLoadingAndErrorHOC;
+
+  return <PostsContentWithLoading hello={HELLO} />;
 };
 
 export default withHelloLogging(Posts, 'Posts');

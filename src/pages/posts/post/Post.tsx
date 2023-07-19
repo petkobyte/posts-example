@@ -8,6 +8,7 @@ import { PostsModel } from '../models';
 import Loading from '../../../components/loading/Loading';
 import { HELLO } from '../../../constants/hello';
 import { withHelloLogging } from '../../../hoc/loggingHoc';
+import { withLoadingAndErrorHOC } from '../../../hoc/loadingAndErrorHOC';
 
 const Post = (props: PostsModel) => {
   const location = useLocation();
@@ -61,19 +62,17 @@ const Post = (props: PostsModel) => {
     }
   }, [userData]);
 
-  if (isLoadingPost || isLoadingUser) return <Loading size={'2xl'} hello={HELLO} />;
-  if (errorPost || errorUser) {
-    return (
-      <div>
-        {errorPost ? errorPost.message : ''} {errorUser ? errorUser.message : ''}
-      </div>
-    );
-  }
+  const PostCardWithLoading = withLoadingAndErrorHOC(
+    PostCard,
+    isLoadingPost || isLoadingUser,
+    !!errorPost || !!errorUser,
+  );
+  withLoadingAndErrorHOC;
 
   return (
-    <div>
-      <PostCard post={post} userName={name} hello={HELLO} />
-    </div>
+    <>
+      <PostCardWithLoading post={post} userName={name} hello={HELLO} />
+    </>
   );
 };
 

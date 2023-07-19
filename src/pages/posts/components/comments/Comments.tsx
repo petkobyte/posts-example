@@ -16,9 +16,7 @@ export const Comments = (props: CommentsProps) => {
   const { postId } = props;
   const [isActive, setIsActive] = useState(false);
 
-  const { error, data: comments, refetch: fetchComments } = useGetComments(postId);
-
-  // TODO: handle error
+  const { data: comments, refetch: fetchComments } = useGetComments(postId);
 
   const onExpand = () => {
     if (comments) {
