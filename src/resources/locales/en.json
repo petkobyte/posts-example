@@ -2,5 +2,7 @@
   "res_pageNotFoundMessage": "404 - Page not found!",
   "res_ooops": "Ooops!",
   "res_comments": "Comments",
-  "res_postsApp": "Posts App"
+  "res_postsApp": "Posts App",
+  "res_viewPosts": "View Posts",
+  "res_homeMessage": "React example application that demonstrates fetching of posts and comments."
 }
