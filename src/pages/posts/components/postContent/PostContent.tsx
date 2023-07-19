@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles.scss';
-import { PostContainerProps } from './models';
+import { PostContentProps } from './models';
 
-export const PostContainer = (props: PostContainerProps) => {
+export const PostContent = (props: PostContentProps) => {
   const { title, body, name } = props;
   return (
     <>

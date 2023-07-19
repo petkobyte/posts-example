@@ -6,7 +6,7 @@ import { CommentModel } from '../../models/commentModel';
 
 export const useGetComments = (postId: number) => {
   const { isLoading, error, data, refetch }: UseQueryResult<CommentModel[], AxiosError> = useQuery({
-    queryKey: ['COMMENTS'],
+    queryKey: [`COMMENTS_${postId}`],
     queryFn: () => getComments(postId),
     enabled: false,
   });

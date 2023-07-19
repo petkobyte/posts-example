@@ -12,7 +12,7 @@ export const Routing = () => {
         <Route path='/' element={<Home />} />
         <Route path='posts'>
           <Route index={true} element={<Posts />} />
-          <Route path=':postId' element={<Post />} />
+          <Route path=':id' element={<Post />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
