@@ -11,13 +11,3 @@ export const useGetUsers = () => {
 
   return { isLoading, error, data };
 };
-
-export const useGetUser = (userId: number) => {
-  const { isLoading, error, data, refetch }: UseQueryResult<UserModel, AxiosError> = useQuery({
-    queryKey: [`USER_${userId}`],
-    queryFn: () => getUser(userId),
-    enabled: false,
-  });
-
-  return { isLoading, error, data, refetch };
-};

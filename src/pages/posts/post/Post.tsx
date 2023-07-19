@@ -3,7 +3,8 @@ import { PostCard } from '../components/postCard';
 import { useLocation, useParams } from 'react-router-dom';
 import { PostModel } from '../models/postModel';
 import { useGetPost } from '../posts/hooks/getPostHook';
-import { useGetUser } from '../posts/hooks/getUsersHook';
+import { Loading } from '../../../components/loading/Loading';
+import { useGetUser } from '../posts/hooks/getUserHook';
 
 const Post = () => {
   const location = useLocation();
@@ -56,6 +57,15 @@ const Post = () => {
       setName(userData.name);
     }
   }, [userData]);
+
+  if (isLoadingPost || isLoadingUser) return <Loading size={'2xl'} />;
+  if (errorPost || errorUser) {
+    return (
+      <div>
+        {errorPost ? errorPost.message : ''} {errorUser ? errorUser.message : ''}
+      </div>
+    );
+  }
 
   return (
     <div>
