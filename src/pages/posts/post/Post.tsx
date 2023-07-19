@@ -5,7 +5,6 @@ import { PostModel } from '../models/postModel';
 import { useGetPost } from '../posts/hooks/getPostHook';
 import { useGetUser } from '../posts/hooks/getUserHook';
 import { PostsModel } from '../models';
-import Loading from '../../../components/loading/Loading';
 import { HELLO } from '../../../constants/hello';
 import { withHelloLogging } from '../../../hoc/loggingHoc';
 import { withLoadingAndErrorHOC } from '../../../hoc/loadingAndErrorHOC';

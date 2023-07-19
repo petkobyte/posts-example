@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useGetPosts } from './hooks/getPostsHook';
 import { PostModel } from '../models/postModel';
 import { useGetUsers } from './hooks/getUsersHook';
@@ -8,7 +8,6 @@ import { useDebounce } from '../../../hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
 import { HELLO } from '../../../constants/hello';
 import Input from '../../../components/input/Input';
-import Loading from '../../../components/loading/Loading';
 import { PostsModel } from '../models';
 import { withHelloLogging } from '../../../hoc/loggingHoc';
 import { withLoadingAndErrorHOC } from '../../../hoc/loadingAndErrorHOC';
