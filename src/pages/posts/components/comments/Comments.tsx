@@ -25,15 +25,9 @@ export const Comments = (props: CommentsProps) => {
         return;
       }
     }
-
+    setIsActive(!isActive);
     fetchComments();
   };
-
-  useEffect(() => {
-    if (comments) {
-      setIsActive(comments[0].postId === postId);
-    }
-  }, [comments]);
 
   const renderComments = () => {
     return comments?.map((comment: CommentModel) => {
