@@ -1,0 +1,23 @@
+@use '../../styles/spacing.scss';
+@use '../../styles/colors.scss';
+
+.loading-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  .loading-text {
+    margin-left: spacing.$space-s ;
+  }
+}
+
+.light {
+  color: white;
+}
+
+.dark {
+  color: colors.$main-purple;
+}

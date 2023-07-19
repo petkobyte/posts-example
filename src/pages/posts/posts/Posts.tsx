@@ -7,6 +7,7 @@ import { PostCard } from '../components/postCard';
 import { Input } from '../../../components/input';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
+import { Loading } from '../../../components/loading/Loading';
 
 const Posts = () => {
   const { t } = useTranslation();
@@ -45,7 +46,7 @@ const Posts = () => {
     return userIds;
   };
 
-  if (isLoadingPosts || isLoadingUsers) return <div>Loading...</div>;
+  if (isLoadingPosts || isLoadingUsers) return <Loading size={'2xl'} />;
   if (postsError || usersError) {
     return (
       <div>
@@ -68,7 +69,7 @@ const Posts = () => {
       <Input
         type='text'
         value={searchValue}
-        placeholder={'Search by name'}
+        placeholder={t('res_searchByName')}
         name={'search-posts-input'}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
         disabled={!posts}
