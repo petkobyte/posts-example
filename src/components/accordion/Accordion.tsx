@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { AccordionProps } from './models';
 import './styles.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,12 +10,25 @@ import {
 
 export const Accordion: FC<AccordionProps> = ({ children, ...props }) => {
   const { title, isActive } = props;
+  const [loading, setLoading] = useState<boolean>(false);
 
   const onClick = () => {
+    if (!isActive) {
+      setLoading(true);
+    }
+
     props.onClick();
   };
 
-  const endIcon: JSX.Element = isActive ? (
+  useEffect(() => {
+    if (isActive) {
+      setLoading(false);
+    }
+  }, [isActive]);
+
+  const endIcon: JSX.Element = loading ? (
+    <FontAwesomeIcon icon={faSpinner} size='lg' spin />
+  ) : isActive ? (
     <FontAwesomeIcon icon={faChevronCircleUp} size='lg' />
   ) : (
     <FontAwesomeIcon icon={faChevronCircleDown} size='lg' />
