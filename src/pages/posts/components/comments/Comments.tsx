@@ -7,19 +7,16 @@ import { CommentModel } from '../../models/commentModel';
 import { Card } from '../../../../components/card';
 import './style.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronCircleUp,
-  faUser,
-  faUserAlt,
-  faUserCircle,
-} from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 export const Comments = (props: CommentsProps) => {
   const { t } = useTranslation();
   const { postId } = props;
   const [isActive, setIsActive] = useState(false);
 
-  const { isLoading, error, data: comments, refetch: fetchComments } = useGetComments(postId);
+  const { error, data: comments, refetch: fetchComments } = useGetComments(postId);
+
+  // TODO: handle error
 
   const onExpand = () => {
     if (comments) {
@@ -36,7 +33,7 @@ export const Comments = (props: CommentsProps) => {
     if (comments) {
       setIsActive(comments[0].postId === postId);
     }
-  }, comments);
+  }, [comments]);
 
   const renderComments = () => {
     return comments?.map((comment: CommentModel) => {

@@ -27,7 +27,7 @@ export const Accordion: FC<AccordionProps> = ({ children, ...props }) => {
   }, [isActive]);
 
   const endIcon: JSX.Element = loading ? (
-    <FontAwesomeIcon icon={faSpinner} size='lg' spin />
+    <FontAwesomeIcon icon={faSpinner} size='lg' />
   ) : isActive ? (
     <FontAwesomeIcon icon={faChevronCircleUp} size='lg' />
   ) : (

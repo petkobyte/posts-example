@@ -26,7 +26,9 @@ const Posts = () => {
 
       return (
         <Card key={id}>
-          <PostContainer title={title} body={body} name={user ? user.name : ''} />
+          <div onClick={() => console.log('tu sam')}>
+            <PostContainer title={title} body={body} name={user ? user.name : ''} />
+          </div>
           <Comments postId={id} />
         </Card>
       );

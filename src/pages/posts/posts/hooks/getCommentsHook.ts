@@ -1,7 +1,6 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 
 import { AxiosError } from 'axios';
-import { UserModel } from '../../models/userModel';
 import { getComments } from '../../api/comments';
 import { CommentModel } from '../../models/commentModel';
 
