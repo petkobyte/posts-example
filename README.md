@@ -1,3 +1,7 @@
+# Posts App is an example app that utilizes technologies like React, Typescript, and React Query to fetch and render mocked data.
+
+# Aprox. coding time: 8h
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
