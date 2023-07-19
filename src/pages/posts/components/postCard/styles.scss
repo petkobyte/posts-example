@@ -1,3 +1,11 @@
+@use '../../../../styles/spacing.scss';
+
 .card-action {
   cursor: pointer;
 }
+
+
+  .back-icon {
+    margin-right: spacing.$space-xs;
+    margin-top: spacing.$space-s;
+  }
