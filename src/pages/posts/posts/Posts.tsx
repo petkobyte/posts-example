@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { useGetPosts } from './hooks/getPostsHook';
 import { PostModel } from '../models/postModel';
 import { useGetUsers } from './hooks/getUsersHook';
@@ -50,7 +50,7 @@ const Posts = (props: PostsModel) => {
     return userIds;
   };
 
-  const renderPosts = () => {
+  const renderPosts = (): JSX.Element[] => {
     return filteredPosts.map((post: PostModel) => {
       const { id, userId } = post;
       const user: UserModel | undefined = users?.find((user: UserModel) => user.id === userId);
@@ -59,10 +59,14 @@ const Posts = (props: PostsModel) => {
     });
   };
 
+  const postsToRender: JSX.Element[] = useMemo(() => {
+    return renderPosts();
+  }, [filteredPosts]);
+
   const PostsContent = () => (
     <>
       {filteredPosts.length ? (
-        renderPosts()
+        postsToRender
       ) : (
         <NoResults text={t('res_noSearchResults')} hello={HELLO} />
       )}
