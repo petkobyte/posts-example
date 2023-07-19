@@ -59,6 +59,17 @@ const Posts = (props: PostsModel) => {
   };
 
   const PostsContent = () => (
+    <>{filteredPosts.length ? renderPosts() : <>{t('res_noSearchResults')}</>}</>
+  );
+
+  const PostsContentWithLoading = withLoadingAndErrorHOC(
+    PostsContent,
+    isLoadingPosts || isLoadingUsers,
+    !!postsError || !!usersError,
+  );
+  withLoadingAndErrorHOC;
+
+  return (
     <>
       <Input
         type='text'
@@ -69,18 +80,9 @@ const Posts = (props: PostsModel) => {
         disabled={!posts}
         hello={HELLO}
       />
-      {filteredPosts.length ? renderPosts() : <>{t('res_noSearchResults')}</>}
+      <PostsContentWithLoading hello={HELLO} />;
     </>
   );
-
-  const PostsContentWithLoading = withLoadingAndErrorHOC(
-    PostsContent,
-    isLoadingPosts || isLoadingUsers,
-    !!postsError || !!usersError,
-  );
-  withLoadingAndErrorHOC;
-
-  return <PostsContentWithLoading hello={HELLO} />;
 };
 
 export default withHelloLogging(Posts, 'Posts');

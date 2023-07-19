@@ -15,4 +15,4 @@ const PostContent = (props: PostContentProps) => {
   );
 };
 
-export default withHelloLogging(PostContent, 'PostCard');
+export default withHelloLogging(PostContent, 'PostContent');
