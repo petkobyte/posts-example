@@ -11,6 +11,7 @@ import Input from '../../../components/input/Input';
 import { PostsModel } from '../models';
 import { withHelloLogging } from '../../../hoc/loggingHoc';
 import { withLoadingAndErrorHOC } from '../../../hoc/loadingAndErrorHOC';
+import NoResults from '../../../components/noResults/NoResults';
 
 const Posts = (props: PostsModel) => {
   const { t } = useTranslation();
@@ -59,7 +60,13 @@ const Posts = (props: PostsModel) => {
   };
 
   const PostsContent = () => (
-    <>{filteredPosts.length ? renderPosts() : <>{t('res_noSearchResults')}</>}</>
+    <>
+      {filteredPosts.length ? (
+        renderPosts()
+      ) : (
+        <NoResults text={t('res_noSearchResults')} hello={HELLO} />
+      )}
+    </>
   );
 
   const PostsContentWithLoading = withLoadingAndErrorHOC(

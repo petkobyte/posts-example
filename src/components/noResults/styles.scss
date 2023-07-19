@@ -1,0 +1,15 @@
+@use '../../styles/spacing.scss';
+@use '../../styles/colors.scss';
+
+.no-results-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  .no-results-text {
+    margin-left: spacing.$space-s ;
+  }
+}
