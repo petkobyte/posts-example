@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { HelloModel } from '../../models.ts/helloModel';
+import { HelloModel } from '../../models/helloModel';
 
 export interface AccordionProps extends HelloModel {
   title: string;

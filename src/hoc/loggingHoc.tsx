@@ -1,5 +1,5 @@
 import React, { ComponentType, PropsWithChildren } from 'react';
-import { HelloModel } from '../models.ts/helloModel';
+import { HelloModel } from '../models/helloModel';
 
 export function withHelloLogging<T extends HelloModel>(
   Component: ComponentType<T>,

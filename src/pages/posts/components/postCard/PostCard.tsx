@@ -13,24 +13,23 @@ import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 export const PostCard = (props: PostCardProps) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const { id: urlId } = useParams();
-  const { post, userName } = props;
+  const { post, userName, onClick } = props;
   const { id, title, body } = post;
 
-  const handleNavigate = () => {
-    if (!urlId) {
-      navigate(`/posts/${post.id}`, { state: { ...post, userName } });
+  const handleClick = () => {
+    if (onClick) {
+      onClick(post, userName);
     }
   };
 
   return (
     <Card key={id} hello={HELLO}>
-      <div className={`${!urlId ? 'card-action' : ''}`} onClick={handleNavigate}>
+      // TODO: create a button type clickable area component to make it focusable
+      <div className={`${onClick ? 'card-action' : ''}`} onClick={handleClick}>
         <PostContent title={title} body={body} name={userName} hello={HELLO} />
       </div>
       <Comments postId={id} hello={HELLO} />
-      {urlId && (
+      {!onClick && (
         <NavLink to='/posts'>
           <FontAwesomeIcon icon={faChevronCircleLeft} className='back-icon' size='lg' />
           {t('res_backToPosts')}

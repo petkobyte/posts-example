@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { HelloModel } from '../../models.ts/helloModel';
+import { HelloModel } from '../../models/helloModel';
 
 export interface InputProps extends HelloModel {
   type: 'text' | 'number' | 'email' | 'password';

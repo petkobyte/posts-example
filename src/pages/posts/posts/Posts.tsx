@@ -12,9 +12,11 @@ import { PostsModel } from '../models';
 import { withHelloLogging } from '../../../hoc/loggingHoc';
 import { withLoadingAndErrorHOC } from '../../../hoc/loadingAndErrorHOC';
 import NoResults from '../../../components/noResults/NoResults';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Posts = (props: PostsModel) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { isLoading: isLoadingPosts, error: postsError, data: posts } = useGetPosts();
   const { isLoading: isLoadingUsers, error: usersError, data: users } = useGetUsers();
 
@@ -31,6 +33,10 @@ const Posts = (props: PostsModel) => {
       setFilteredPosts(posts);
     }
   }, [posts]);
+
+  const handleNavigate = (post: PostModel, userName: string) => {
+    navigate(`/posts/${post.id}`, { state: { ...post, userName } });
+  };
 
   const filterUsers = (searchValue: string): UserModel[] => {
     let updatedUsers: UserModel[] = users ? [...users] : [];
@@ -55,7 +61,15 @@ const Posts = (props: PostsModel) => {
       const { id, userId } = post;
       const user: UserModel | undefined = users?.find((user: UserModel) => user.id === userId);
 
-      return <PostCard key={id} post={post} userName={user ? user.name : ''} hello={HELLO} />;
+      return (
+        <PostCard
+          key={id}
+          post={post}
+          userName={user ? user.name : ''}
+          onClick={handleNavigate}
+          hello={HELLO}
+        />
+      );
     });
   };
 

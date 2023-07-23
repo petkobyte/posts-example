@@ -1,5 +1,5 @@
 import React, { ComponentType, PropsWithChildren } from 'react';
-import { HelloModel } from '../models.ts/helloModel';
+import { HelloModel } from '../models/helloModel';
 import Card from '../components/card/Card';
 import { HELLO } from '../constants/hello';
 import Loading from '../components/loading/Loading';
