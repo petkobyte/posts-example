@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.scss';
 import { PostCardProps } from './models';
 import Card from '../../../../components/card/Card';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Comments } from '../comments';
 import { HELLO } from '../../../../constants/hello';
 import { withHelloLogging } from '../../../../hoc/loggingHoc';
@@ -24,7 +24,7 @@ export const PostCard = (props: PostCardProps) => {
 
   return (
     <Card key={id} hello={HELLO}>
-      // TODO: create a button type clickable area component to make it focusable
+      {/* TODO: create a button type clickable area component to make it focusable */}
       <div className={`${onClick ? 'card-action' : ''}`} onClick={handleClick}>
         <PostContent title={title} body={body} name={userName} hello={HELLO} />
       </div>
